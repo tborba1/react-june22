@@ -40,7 +40,7 @@ export default function Home() {
                 year={movieData[2].Year} 
                 rating={movieData[2].Rated}/>
             </div>
-            
+
             <div><MovieList /></div>
         </div>
     );
