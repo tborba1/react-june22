@@ -19,7 +19,7 @@ export default function MovieList() {
             setIsLoading(false);
           }
         getMovies();  
-    }, [API_KEY]); // Don't forget your dependency list! (An empty array is sufficient)
+    }, []); // Don't forget your dependency list! (An empty array is sufficient)
 
     return (
         <div>
