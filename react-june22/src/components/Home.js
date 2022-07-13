@@ -22,7 +22,7 @@ const movieData = [
 export default function Home() {
     return (
         <div>
-            <h1 className="HeaderText">Julia Roberts Movies</h1>
+            <h1 className="HeaderText">Movie App</h1>
             <h2 className="SubText" style={{ fontStyle: "italic", marginTop: 20 }}>Movie Details</h2>
             <div style={{ display: "flex" }}>
                 <MovieCard 

@@ -1,11 +1,7 @@
 import { useState } from "react";
 
 export default function MovieForm() {
-    const [recipientName, setRecipientName] = useState("");
-    const [recipientEmail, setRecipientEmail] = useState("");
     const [selectedMovieName, setMovieName] = useState("");
-    const [senderName, setSenderName] = useState("");
-    const [senderEmail, setSenderEmail] = useState("");
 
     function handleSubmit() {
         console.log("Submitted!");
@@ -14,12 +10,12 @@ export default function MovieForm() {
     return (
         <div>
             <form onSumbit={handleSubmit}>
-                <label htmlFor="theirName">Their Name</label>
+                <label htmlFor="movieCriteria">Enter Movie Criteria</label>
                 <input 
-                    name="theirName"
+                    name="movieCriteria"
                     type="text"
-                    value={recipientName}
-                    onChange={(event)=> setRecipientName(event.target.value)}
+                    value={selectedMovieName}
+                    onChange={(event)=> setMovieName(event.target.value)}
                     />
             </form>
         </div>
