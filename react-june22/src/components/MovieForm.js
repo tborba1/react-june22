@@ -3,7 +3,9 @@ import { useState } from "react";
 export default function MovieForm() {
     const [selectedMovieName, setMovieName] = useState("");
 
-    function handleSubmit() {
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log('movieCriteria:', selectedMovieName);
         console.log("Submitted!");
     }
 
@@ -17,6 +19,7 @@ export default function MovieForm() {
                     value={selectedMovieName}
                     onChange={(event)=> setMovieName(event.target.value)}
                     />
+                <button type="submit">Submit</button>
             </form>
         </div>
     );

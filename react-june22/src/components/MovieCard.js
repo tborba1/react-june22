@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const MoviePoster = styled.img`
     width: auto;
-    height: 300px;
+    height: 200px;
 `;
 
 const DetailsButton = styled.div`
