@@ -37,11 +37,11 @@
   }
 }
 
-.HeaderText {
+/* .HeaderText {
   background-color: lightgreen; 
   margin: 32px;
   border-radius: 10px;
-}
+} */
 
 .SubText {
   background-color: lightgrey;
@@ -58,7 +58,7 @@
   border: 1px solid lightgrey;
   border-radius: 10px;
   width: 25vw;
-  padding: 20px;
-  margin: 40px;
+  padding: 10px;
+  margin: 10px;
   background-color: darkcyan;
 }

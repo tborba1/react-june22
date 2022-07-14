@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import styled from "styled-components";
 import MovieCard from "./MovieCard";
+import MovieForm from "./MovieForm";
 
 const API_KEY = process.env.REACT_APP_MOVIES_API_KEY;
 
@@ -22,30 +24,39 @@ export default function MovieList() {
         getMovies();  
     }, [searchCriteria]); // Don't forget your dependency list! (An empty array is sufficient)
 
+    const CardContainer = styled.div`
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+    `;
+
     return (
         <div>
-            <h2 className="SubText" style={{ fontStyle: "italic", marginTop: 20 }}>Movie List</h2>
             {/* <button onClick={() => setTimespan("This Month")}>This Month</button>
             <button onClick={() => setTimespan("This Year")}>This Year</button>
             <div>{timespan} is selected.</div> */}
+            <MovieForm />
+            <br></br>
             <button onClick={() => setSearchCriteria("Thor")}>Find Thor</button>
             <button onClick={() => setSearchCriteria("Batman")}>Find Batman</button>
             <button onClick={() => setSearchCriteria("Superman")}>Find Superman</button>
             <div>{searchCriteria} is selected.</div>
+            <h2 className="SubText" style={{ fontStyle: "italic", marginTop: 20 }}>Movie List</h2>
             {!isLoading ? (
-                <div>
+                <CardContainer>
                     {movies.length > 0 ? (
                         movies.map((movie) => (
-                            <div style={{ display: "flex" }}>
+                            <div>
                                 <MovieCard 
                                 title={movie.Title} 
-                                year={movie.Year}/>
+                                year={movie.Year}
+                                poster={movie.Poster}/>
                             </div>
                         ))
                     ): (
                         <div>No results found.</div>
                     )}
-                    </div>
+                    </CardContainer>
                     ): (
                         <div>Loading...</div>
                     )}
