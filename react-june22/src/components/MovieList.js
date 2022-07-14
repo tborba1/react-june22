@@ -35,7 +35,9 @@ export default function MovieList() {
             {/* <button onClick={() => setTimespan("This Month")}>This Month</button>
             <button onClick={() => setTimespan("This Year")}>This Year</button>
             <div>{timespan} is selected.</div> */}
-            <MovieForm />
+
+            <MovieForm searchCriteria={searchCriteria} setSearchCriteria={setSearchCriteria}/>
+
             <br></br>
             <button onClick={() => setSearchCriteria("Thor")}>Find Thor</button>
             <button onClick={() => setSearchCriteria("Batman")}>Find Batman</button>
@@ -44,8 +46,8 @@ export default function MovieList() {
             <h2 className="SubText" style={{ fontStyle: "italic", marginTop: 20 }}>Movie List</h2>
             {!isLoading ? (
                 <CardContainer>
-                    {movies.length > 0 ? (
-                        movies.map((movie) => (
+                    {movies?.length > 0 ? (
+                        movies?.map((movie) => (
                             <div>
                                 <MovieCard 
                                 title={movie.Title} 

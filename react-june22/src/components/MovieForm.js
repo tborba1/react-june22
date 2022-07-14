@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-export default function MovieForm() {
-    const [selectedMovieName, setMovieName] = useState("");
+export default function MovieForm(props) {
+    const [searchCriteria, setSearchCriteria] = useState("");
 
     function handleSubmit(event) {
-        event.preventDefault();
-        console.log('movieCriteria:', selectedMovieName);
+        // event.preventDefault();
+        // console.log('movieCriteria:', selectedMovieName);
         console.log("Submitted!");
     }
 
@@ -16,10 +16,9 @@ export default function MovieForm() {
                 <input 
                     name="movieCriteria"
                     type="text"
-                    value={selectedMovieName}
-                    onChange={(event)=> setMovieName(event.target.value)}
+                    value={props.searchCriteria}
+                    onChange={(event)=> props.setSearchCriteria(event.target.value)}
                     />
-                <button type="submit">Submit</button>
             </form>
         </div>
     );
