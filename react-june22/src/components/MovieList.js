@@ -17,7 +17,7 @@ export default function MovieList() {
             const url = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchCriteria}`;
             const response = await fetch(url);
             const data = await response.json();
-            console.log("data is:", data);
+            // console.log("data is:", data);
             setMovies(data.Search);
             setIsLoading(false);
           }
