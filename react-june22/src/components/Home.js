@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
 import MovieList from "./MovieList";
-import ReactModal from "react-modal";
+// import MovieModal from "./MovieModal";
 
 const HeaderText = styled.h1`
     background-color: lightgreen; 
@@ -10,17 +9,14 @@ const HeaderText = styled.h1`
 `;
 
 export default function Home() {
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
     return (
         <div>
             <HeaderText className="HeaderText">Movie App</HeaderText>
-            <button onClick={() => setIsModalOpen(true)}>OPEN</button>
             <div><MovieList /></div>
-            <div><ReactModal isOpen={isModalOpen}>
-                    <button onClick={() => setIsModalOpen(false)}>CLOSE</button>
-                </ReactModal></div>
+                {/* <MovieModal
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                    /> */}
         </div>
     );
 }

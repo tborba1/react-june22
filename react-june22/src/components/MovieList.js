@@ -7,7 +7,7 @@ const API_KEY = process.env.REACT_APP_MOVIES_API_KEY;
 
 export default function MovieList() {
     // const [timespan, setTimespan] = useState("This Month");
-    const [searchCriteria, setSearchCriteria] = useState("Thor");
+    const [searchCriteria, setSearchCriteria] = useState("");
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     
