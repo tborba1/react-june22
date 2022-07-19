@@ -52,7 +52,8 @@ export default function MovieList() {
                                 <MovieCard 
                                 title={movie.Title} 
                                 year={movie.Year}
-                                poster={movie.Poster}/>
+                                poster={movie.Poster}
+                                movieId={movie.imdbID}/>
                             </div>
                         ))
                     ): (
