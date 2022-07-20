@@ -27,7 +27,7 @@ export default function MovieModal(props) {
     }, [props.details.movieId]);
 
     return (
-        <ReactModal isOpen={props.isOpen}>
+        <ReactModal isOpen={props.isOpen} ariaHideApp={false}>
             <MoviePoster src={props.details.poster} />
             <h2 style={{ fontStyle: "italic"}}>{props.details.title}</h2>
             <h3 style={{ marginTop: "0px" }}>{props.details.year}</h3>
