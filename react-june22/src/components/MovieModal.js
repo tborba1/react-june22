@@ -7,6 +7,7 @@ const API_KEY = process.env.REACT_APP_MOVIES_API_KEY;
 const MoviePoster = styled.img`
     width: auto;
     height: 200px;
+    margin-top: 20px;
 `;
 
 export default function MovieModal(props) {
@@ -28,11 +29,12 @@ export default function MovieModal(props) {
 
     return (
         <ReactModal isOpen={props.isOpen} ariaHideApp={false}>
+            <button onClick={() => props.setIsModalOpen(false)}>CLOSE</button>
+            <br></br>
             <MoviePoster src={props.details.poster} />
             <h2 style={{ fontStyle: "italic"}}>{props.details.title}</h2>
             <h3 style={{ marginTop: "0px" }}>{props.details.year}</h3>
             <p>{props.details.movieId}</p>
-            <button onClick={() => props.setIsModalOpen(false)}>CLOSE</button>
         </ReactModal>
     );
 }
