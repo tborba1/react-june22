@@ -32,6 +32,10 @@ export default function MovieModal(props) {
         setMovies(null);
     }
 
+    useEffect(() => {
+        ReactModal.setAppElement("body");
+    }, []);
+
     return (
         <ReactModal isOpen={props.isOpen} ariaHideApp={false} onRequestClose={() => props.setIsModalOpen(false)}>
             <button onClick={handleClose}>CLOSE</button>
