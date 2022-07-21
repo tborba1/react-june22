@@ -2,30 +2,36 @@ import { useState, useEffect, useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import styled from "styled-components";
 import MovieCard from "./MovieCard";
-import MovieForm from "./MovieForm";
+// import MovieForm from "./MovieForm";
 
 const API_KEY = process.env.REACT_APP_MOVIES_API_KEY;
 
 export default function MovieList() {
     // const [timespan, setTimespan] = useState("This Month");
     const [searchCriteria, setSearchCriteria] = useState("");
+    const [query, setQuery] = useState("");
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setQuery(searchCriteria);
+    }
     const {theme, toggleTheme} = useContext(ThemeContext);
     
     useEffect(() => {
-        async function getMovies(name) {
+        async function getMovies() {
             setIsLoading(true);
-            const url = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchCriteria}`;
+            const url = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`;
             const response = await fetch(url);
             const data = await response.json();
             // console.log("data is:", data);
             setMovies(data.Search);
             setIsLoading(false);
           }
-        getMovies();  
-    }, [searchCriteria]); // Don't forget your dependency list! (An empty array is sufficient)
+          if (query) {
+            getMovies();
+          }
+    }, [query]); // Don't forget your dependency list! (An empty array is sufficient)
 
     const CardContainer = styled.div`
         display: flex;
@@ -49,12 +55,21 @@ export default function MovieList() {
             <button onClick={() => setTimespan("This Year")}>This Year</button>
             <div>{timespan} is selected.</div> */}
 
-            <MovieForm searchCriteria={searchCriteria} setSearchCriteria={setSearchCriteria}/>
+            {/* <MovieForm searchCriteria={searchCriteria} setSearchCriteria={setSearchCriteria}/>
+             */}
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="movieCriteria">Find a movie: </label>
+                <input 
+                    value={searchCriteria}
+                    onChange={(e)=> setSearchCriteria(e.target.value)}
+                    />
+                <button type="submit">Search</button>
+            </form>
 
             <br></br>
-            <button onClick={() => setSearchCriteria("Thor")}>Find Thor</button>
-            <button onClick={() => setSearchCriteria("Batman")}>Find Batman</button>
-            <button onClick={() => setSearchCriteria("Superman")}>Find Superman</button>
+            <button onClick={() => setSearchCriteria("Thor")}>Thor</button>
+            <button onClick={() => setSearchCriteria("Wonder Woman")}>Wonder Woman</button>
+            <button onClick={() => setSearchCriteria("Avengers")}>Avengers</button>
             <div>{searchCriteria} is selected.</div>
             <ListDiv dark={theme === 'dark'}>Movie List</ListDiv>
             {!isLoading ? (
