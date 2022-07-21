@@ -4,9 +4,15 @@ import styled from "styled-components";
 import MovieList from "./MovieList";
 
 const HeaderText = styled.h1`
-    background-color: lightgreen; 
+    color: ${props => props.dark ? 'black' : 'white'}; 
+    background-color: ${props => props.dark ? 'lightgreen' : 'purple'}; 
     margin: 32px;
     border-radius: 10px;
+`;
+
+const HomeDiv = styled.div`
+    color: ${props => props.dark ? 'white' : 'black'}; 
+    background-color: ${props => props.dark ? 'purple' : 'lightgreen'};
 `;
 
 export default function Home() {
@@ -14,11 +20,11 @@ export default function Home() {
     const {theme, toggleTheme} = useContext(ThemeContext);
 
     return (
-        <div>
-            <div>the theme is {theme}</div>
+        <HomeDiv dark={theme === 'dark'}>
+            <div>The theme is: {theme}</div>
             <button onClick={() => toggleTheme()}>Toggle Theme</button>
-            <HeaderText className="HeaderText">Movie App</HeaderText>
-            <div><MovieList /></div>
-        </div>
+            <HeaderText dark={theme === 'dark'} className="HeaderText">Movie App</HeaderText>
+            <div><MovieList theme={theme} /></div>
+        </HomeDiv>
     );
 }

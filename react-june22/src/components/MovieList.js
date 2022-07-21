@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
 import styled from "styled-components";
 import MovieCard from "./MovieCard";
 import MovieForm from "./MovieForm";
@@ -10,6 +11,8 @@ export default function MovieList() {
     const [searchCriteria, setSearchCriteria] = useState("");
     const [movies, setMovies] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+
+    const {theme, toggleTheme} = useContext(ThemeContext);
     
     useEffect(() => {
         async function getMovies(name) {
@@ -30,6 +33,16 @@ export default function MovieList() {
         justify-content: space-evenly;
     `;
 
+    const ListDiv = styled.h2`
+        color: ${props => props.dark ? 'white' : 'black'}; 
+        background-color: ${props => props.dark ? 'grey' : 'lightgrey'};
+        font-style: italic;
+        margin-top: 20px;
+        margin-left: 32px;
+        margin-right: 32px;
+        border-radius: 10px;
+`;
+
     return (
         <div>
             {/* <button onClick={() => setTimespan("This Month")}>This Month</button>
@@ -43,7 +56,7 @@ export default function MovieList() {
             <button onClick={() => setSearchCriteria("Batman")}>Find Batman</button>
             <button onClick={() => setSearchCriteria("Superman")}>Find Superman</button>
             <div>{searchCriteria} is selected.</div>
-            <h2 className="SubText" style={{ fontStyle: "italic", marginTop: 20 }}>Movie List</h2>
+            <ListDiv dark={theme === 'dark'}>Movie List</ListDiv>
             {!isLoading ? (
                 <CardContainer>
                     {movies?.length > 0 ? (

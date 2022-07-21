@@ -37,19 +37,6 @@
   }
 }
 
-/* .HeaderText {
-  background-color: lightgreen; 
-  margin: 32px;
-  border-radius: 10px;
-} */
-
-.SubText {
-  background-color: lightgrey;
-  margin-left: 32px;
-  margin-right: 32px;
-  border-radius: 10px;
-}
-
 .MovieCard {
   display: flex;
   flex-direction: column;
