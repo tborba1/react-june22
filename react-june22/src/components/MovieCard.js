@@ -12,7 +12,7 @@ export default function MovieCard(props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <div className="MovieCard">
+        <div className="MovieCard" >
             <MoviePoster src={props.poster} />
             <h2 style={{ fontStyle: "italic"}}>{props.title}</h2>
             <h3 style={{ marginTop: "0px" }}>{props.year}</h3>
