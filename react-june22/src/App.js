@@ -1,11 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from "./components/Home";
+import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
   return (
     <div className="App">
-      <Home /> 
+      <ThemeProvider>
+        <Home />
+      </ThemeProvider> 
     </div>
   );
 }
