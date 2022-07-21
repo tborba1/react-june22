@@ -2,16 +2,16 @@ import { useState } from "react";
 
 export default function MovieForm(props) {
     const [searchCriteria, setSearchCriteria] = useState("");
+    const [query, setQuery] = useState("");
 
-    function handleSubmit(event) {
-        // event.preventDefault();
-        // console.log('movieCriteria:', selectedMovieName);
-        console.log("Submitted!");
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setQuery(searchCriteria);
     }
 
     return (
         <div>
-            <form onSumbit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="movieCriteria">Enter Movie Criteria</label>
                 <input 
                     name="movieCriteria"
@@ -19,6 +19,7 @@ export default function MovieForm(props) {
                     value={props.searchCriteria}
                     onChange={(event)=> props.setSearchCriteria(event.target.value)}
                     />
+                <button type="submit">Search</button>
             </form>
         </div>
     );

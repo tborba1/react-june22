@@ -27,9 +27,14 @@ export default function MovieModal(props) {
         getMovies();  
     }, [props.details.movieId]);
 
+    const handleClose = () => {
+        props.setIsModalOpen(false);
+        setMovies(null);
+    }
+
     return (
         <ReactModal isOpen={props.isOpen} ariaHideApp={false} onRequestClose={() => props.setIsModalOpen(false)}>
-            <button onClick={() => props.setIsModalOpen(false)}>CLOSE</button>
+            <button onClick={handleClose}>CLOSE</button>
             <br></br>
             <MoviePoster src={movies.Poster} />
             <h2 style={{ fontStyle: "italic"}}>{movies.Title}</h2>
